@@ -8,7 +8,7 @@ spring:
   autoconfigure:
     exclude:
       - com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure # 排除 Druid 的自动配置，使用 dynamic-datasource-spring-boot-starter 配置多数据源
-      - org.springframework.boot.autoconfigure.quartz.QuartzAutoConfiguration # 默认 local 环境，不开启 Quartz 的自动配置
+#      - org.springframework.boot.autoconfigure.quartz.QuartzAutoConfiguration # 默认 local 环境，不开启 Quartz 的自动配置
       - de.codecentric.boot.admin.server.config.AdminServerAutoConfiguration # 禁用 Spring Boot Admin 的 Server 的自动配置
       - de.codecentric.boot.admin.server.ui.config.AdminServerUiAutoConfiguration # 禁用 Spring Boot Admin 的 Server UI 的自动配置
       - de.codecentric.boot.admin.client.config.SpringBootAdminClientAutoConfiguration # 禁用 Spring Boot Admin 的 Client 的自动配置
@@ -48,14 +48,14 @@ spring:
       datasource:
         master:
           name: ruoyi-vue-pro
-          url: jdbc:mysql://127.0.0.1:3306/${spring.datasource.dynamic.datasource.master.name}?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true # MySQL Connector/J 8.X 连接的示例
-          #          url: jdbc:mysql://127.0.0.1:3306/${spring.datasource.dynamic.datasource.master.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT # MySQL Connector/J 5.X 连接的示例
-          #          url: jdbc:postgresql://127.0.0.1:5432/${spring.datasource.dynamic.datasource.master.name} # PostgreSQL 连接的示例
-          #          url: jdbc:oracle:thin:@127.0.0.1:1521:xe # Oracle 连接的示例
-          #          url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=${spring.datasource.dynamic.datasource.master.name} # SQLServer 连接的示例
+          url: jdbc:mysql://101.43.67.200:3306/${spring.datasource.dynamic.datasource.master.name}?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true # MySQL Connector/J 8.X 连接的示例
+          #          url: jdbc:mysql://101.43.67.200:3306/${spring.datasource.dynamic.datasource.master.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT # MySQL Connector/J 5.X 连接的示例
+          #          url: jdbc:postgresql://101.43.67.200:5432/${spring.datasource.dynamic.datasource.master.name} # PostgreSQL 连接的示例
+          #          url: jdbc:oracle:thin:@101.43.67.200:1521:xe # Oracle 连接的示例
+          #          url: jdbc:sqlserver://101.43.67.200:1433;DatabaseName=${spring.datasource.dynamic.datasource.master.name} # SQLServer 连接的示例
           #          url: jdbc:dm://10.211.55.4:5236?schema=RUOYI_VUE_PRO # DM 连接的示例
-          username: root
-          password: 123456
+          username: ruoyi-vue-pro
+          password: conghua.
         #          username: sa
         #          password: JSm:g(*%lU4ZAkz06cd52KqT3)i1?H7W
         #          username: SYSDBA # DM 连接的示例
@@ -63,22 +63,22 @@ spring:
         slave: # 模拟从库，可根据自己需要修改
           name: ruoyi-vue-pro
           lazy: true # 开启懒加载，保证启动速度
-          url: jdbc:mysql://127.0.0.1:3306/${spring.datasource.dynamic.datasource.slave.name}?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true # MySQL Connector/J 8.X 连接的示例
-          #          url: jdbc:mysql://127.0.0.1:3306/${spring.datasource.dynamic.datasource.slave.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT # MySQL Connector/J 5.X 连接的示例
-          #          url: jdbc:postgresql://127.0.0.1:5432/${spring.datasource.dynamic.datasource.slave.name} # PostgreSQL 连接的示例
-          #          url: jdbc:oracle:thin:@127.0.0.1:1521:xe # Oracle 连接的示例
-          #          url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=${spring.datasource.dynamic.datasource.slave.name} # SQLServer 连接的示例
-          username: root
-          password: 123456
+          url: jdbc:mysql://101.43.67.200:3306/${spring.datasource.dynamic.datasource.slave.name}?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true # MySQL Connector/J 8.X 连接的示例
+          #          url: jdbc:mysql://101.43.67.200:3306/${spring.datasource.dynamic.datasource.slave.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT # MySQL Connector/J 5.X 连接的示例
+          #          url: jdbc:postgresql://101.43.67.200:5432/${spring.datasource.dynamic.datasource.slave.name} # PostgreSQL 连接的示例
+          #          url: jdbc:oracle:thin:@101.43.67.200:1521:xe # Oracle 连接的示例
+          #          url: jdbc:sqlserver://101.43.67.200:1433;DatabaseName=${spring.datasource.dynamic.datasource.slave.name} # SQLServer 连接的示例
+          username: ruoyi-vue-pro
+          password: conghua.
   #          username: sa
   #          password: JSm:g(*%lU4ZAkz06cd52KqT3)i1?H7W
 
   # Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
   redis:
-    host: 127.0.0.1 # 地址
+    host: 101.43.67.200 # 地址
     port: 6379 # 端口
     database: 0 # 数据库索引
-#    password: dev # 密码，建议生产环境开启
+    password: conghua. # 密码，建议生产环境开启
 
 --- #################### 定时任务相关配置 ####################
 
@@ -115,18 +115,18 @@ spring:
 
 # rocketmq 配置项，对应 RocketMQProperties 配置类
 rocketmq:
-  name-server: 127.0.0.1:9876 # RocketMQ Namesrv
+  name-server: 101.43.67.200:9876 # RocketMQ Namesrv
 
 spring:
   # RabbitMQ 配置项，对应 RabbitProperties 配置类
   rabbitmq:
-    host: 127.0.0.1 # RabbitMQ 服务的地址
+    host: 101.43.67.200 # RabbitMQ 服务的地址
     port: 5672 # RabbitMQ 服务的端口
     username: rabbit # RabbitMQ 服务的账号
     password: rabbit # RabbitMQ 服务的密码
   # Kafka 配置项，对应 KafkaProperties 配置类
   kafka:
-    bootstrap-servers: 127.0.0.1:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
+    bootstrap-servers: 101.43.67.200:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
 
 --- #################### 服务保障相关配置 ####################
 
@@ -134,6 +134,16 @@ spring:
 lock4j:
   acquire-timeout: 3000 # 获取分布式锁超时时间，默认为 3000 毫秒
   expire: 30000 # 分布式锁的超时时间，默认为 30 毫秒
+
+# Resilience4j 配置项
+resilience4j:
+  ratelimiter:
+    instances:
+      backendA:
+        limit-for-period: 1 # 每个周期内，允许的请求数。默认为 50
+        limit-refresh-period: 60s # 每个周期的时长，单位：微秒。默认为 500
+        timeout-duration: 1s # 被限流时，阻塞等待的时长，单位：微秒。默认为 5s
+        register-health-indicator: true # 是否注册到健康监测
 
 --- #################### 监控相关配置 ####################
 
@@ -151,7 +161,7 @@ spring:
     admin:
       # Spring Boot Admin Client 客户端的相关配置
       client:
-        url: http://127.0.0.1:${server.port}/${spring.boot.admin.context-path} # 设置 Spring Boot Admin Server 地址
+        url: http://101.43.67.200:${server.port}/${spring.boot.admin.context-path} # 设置 Spring Boot Admin Server 地址
         instance:
           service-host-type: IP # 注册实例时，优先使用 IP [IP, HOST_NAME, CANONICAL_HOST_NAME]
       # Spring Boot Admin Server 服务端的相关配置
@@ -170,6 +180,7 @@ logging:
     cn.iocoder.yudao.module.pay.dal.mysql: debug
     cn.iocoder.yudao.module.pay.dal.mysql.notify.PayNotifyTaskMapper: INFO # 配置 JobLogMapper 的日志级别为 info
     cn.iocoder.yudao.module.system.dal.mysql: debug
+    cn.iocoder.yudao.module.system.dal.mysql.sensitiveword.SensitiveWordMapper: INFO # 配置 SensitiveWordMapper 的日志级别为 info
     cn.iocoder.yudao.module.system.dal.mysql.sms.SmsChannelMapper: INFO # 配置 SmsChannelMapper 的日志级别为 info
     cn.iocoder.yudao.module.tool.dal.mysql: debug
     cn.iocoder.yudao.module.member.dal.mysql: debug
@@ -222,9 +233,11 @@ yudao:
       - ${spring.boot.admin.context-path}/** # 不处理 Spring Boot Admin 的请求
       - ${management.endpoints.web.base-path}/** # 不处理 Actuator 的请求
   pay:
-    order-notify-url: http://yunai.natapp1.cc/admin-api/pay/notify/order # 支付渠道的【支付】回调地址
-    refund-notify-url: http://yunai.natapp1.cc/admin-api/pay/notify/refund # 支付渠道的【退款】回调地址
+    order-notify-url: http://101.43.67.200/admin-api/pay/notify/order # 支付渠道的【支付】回调地址
+    refund-notify-url: http://101.43.67.200/admin-api/pay/notify/refund # 支付渠道的【退款】回调地址
   access-log: # 访问日志的配置项
+    enable: false
+  error-code: # 错误码相关配置项
     enable: false
   demo: false # 关闭演示模式
   tencent-lbs-key: TVDBZ-TDILD-4ON4B-PFDZA-RNLKH-VVF6E # QQ 地图的密钥 https://lbs.qq.com/service/staticV2/staticGuide/staticDoc
@@ -254,4 +267,18 @@ justauth:
     type: REDIS
     prefix: 'social_auth_state:' # 缓存前缀，目前只对 Redis 缓存生效，默认 JUSTAUTH::STATE::
     timeout: 24h # 超时时长，目前只对 Redis 缓存生效，默认 3 分钟
+
+# TODO 赤焰：这个配置的目的是？
+#ureport配置
+#ureport:
+#  disableHttpSessionReportCache: true #是否禁用
+#  disableFileProvider: true #是否禁用
+#  debug: true
+#  fileStoreDir: D://ureport//files
+#  provider:
+#    database:
+#       disabled: true
+#    file:
+#       disabled: true
+
 
