@@ -18,7 +18,8 @@ public class BannerApplicationRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        ThreadUtil.execute(() -> {
+        log.info("项目启动成功！");
+        /*ThreadUtil.execute(() -> {
             ThreadUtil.sleep(1, TimeUnit.SECONDS); // 延迟 1 秒，保证输出到结尾
             log.info("\n----------------------------------------------------------\n\t" +
                             "项目启动成功！\n\t" +
@@ -58,7 +59,7 @@ public class BannerApplicationRunner implements ApplicationRunner {
             if (isNotPresent("cn.iocoder.yudao.module.pay.framework.pay.config.PayConfiguration")) {
                 System.out.println("[支付系统 yudao-module-pay - 已禁用][参考 https://doc.iocoder.cn/pay/build/ 开启]");
             }
-        });
+        });*/
     }
 
     private static boolean isNotPresent(String className) {
